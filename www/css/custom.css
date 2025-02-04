@@ -1,0 +1,13 @@
+/* tope center */
+.t-center{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+/*Left center*/
+.l-center{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}

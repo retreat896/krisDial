@@ -11,5 +11,29 @@
     "ecosystem:cordova"
   ],
   "author": "Apache Cordova Team",
-  "license": "Apache-2.0"
+  "license": "Apache-2.0",
+  "dependencies": {
+    "cap": "^0.2.1",
+    "cordova": "^6.1.1",
+    "cordova-plugin-ble-central": "^1.7.8",
+    "gradle": "^1.2.4"
+  },
+  "devDependencies": {
+    "cordova-android": "^13.0.0",
+    "cordova-browser": "^7.0.0"
+  },
+  "cordova": {
+    "platforms": [
+      "android",
+      "browser"
+    ],
+    "plugins": {
+      "cordova-plugin-ble-central": {
+        "BLUETOOTH_USAGE_DESCRIPTION": "Scan for bluetooth bass knobs",
+        "IOS_INIT_ON_LOAD": "false",
+        "BLUETOOTH_RESTORE_STATE": "false",
+        "ACCESS_BACKGROUND_LOCATION": "true"
+      }
+    }
+  }
 }
