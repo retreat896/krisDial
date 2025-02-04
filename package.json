@@ -1,6 +1,6 @@
 {
-  "name": "io.cordova.hellocordova",
-  "displayName": "HelloCordova",
+  "name": "com.example.hello",
+  "displayName": "HelloWorld",
   "version": "1.0.0",
   "description": "A sample Apache Cordova application that responds to the deviceready event.",
   "main": "index.js",
@@ -12,26 +12,17 @@
   ],
   "author": "Apache Cordova Team",
   "license": "Apache-2.0",
-  "dependencies": {
-    "cap": "^0.2.1",
-    "cordova": "^6.1.1",
-    "cordova-plugin-ble-central": "^1.7.8",
-    "gradle": "^1.2.4"
-  },
   "devDependencies": {
     "cordova-android": "^13.0.0",
-    "cordova-browser": "^7.0.0"
+    "cordova-plugin-ble-central": "^1.7.8"
   },
   "cordova": {
     "platforms": [
-      "android",
-      "browser"
+      "android"
     ],
     "plugins": {
       "cordova-plugin-ble-central": {
-        "BLUETOOTH_USAGE_DESCRIPTION": "Scan for bluetooth bass knobs",
-        "IOS_INIT_ON_LOAD": "false",
-        "BLUETOOTH_RESTORE_STATE": "false",
+        "BLUETOOTH_USAGE_DESCRIPTION": "Wireless bass knob Sanner\u0013",
         "ACCESS_BACKGROUND_LOCATION": "true"
       }
     }

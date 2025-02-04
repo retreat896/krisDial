@@ -1,29 +1,97 @@
-/*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License.  You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
- */
-
-// Wait for the deviceready event before using any of Cordova's device APIs.
-// See https://cordova.apache.org/docs/en/latest/cordova/events/events.html#deviceready
 document.addEventListener('deviceready', onDeviceReady, false);
 
-function onDeviceReady() {
-    // Cordova is now initialized. Have fun!
+let targetDeviceName = "ESPKnob";
+let targetDeviceId = null;
+let connected = false;
 
-    console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
-    document.getElementById('deviceready').classList.add('ready');
+function onDeviceReady() {
+    logToScreen('Running cordova-' + cordova.platformId + '@' + cordova.version);
+
+    if (typeof ble === "undefined") {
+        console.error("BLE plugin is not loaded. Check your plugin installation.");
+        return;
+    }
+
+    ble.isEnabled(
+        () => logToScreen('BLE is enabled'),
+        () => logToScreen('BLE is NOT enabled')
+    );
+}
+
+let scanTimeout = null;
+
+function scanAndConnect() {
+    if (scanTimeout !== null) {
+        clearTimeout(scanTimeout);
+    }
+
+    logToScreen("Starting BLE scan...");
+
+    ble.scan([], 10, function (device) {
+        logToScreen("Device found: " + JSON.stringify(device, null, 2));
+        if (device.name === targetDeviceName) {
+            targetDeviceId = device.id;
+            logToScreen("Found target device: " + targetDeviceId);
+
+            logToScreen("Connecting to " + targetDeviceId);
+
+            ble.stopScan();
+            ble.connect(targetDeviceId, function(peripheral) {
+                logToScreen("Connected to device: " + JSON.stringify(peripheral, null, 2));
+                connected = true;
+                window.connectedDevice = device;
+                console.log(device);
+
+                // Auto-reconnect if disconnected
+                ble.startStateNotifications(targetDeviceId, function(state) {
+                    if (state === "disconnected") {
+                        logToScreen("Device disconnected. Reconnecting...");
+                        window.connectedDevice = null;
+                        connected = false;
+                        setTimeout(scanAndConnect, 5000);
+                    }
+                });
+
+            }, function(error) {
+                logToScreen("Connection failed: " + JSON.stringify(error));
+                connected = false;
+                setTimeout(scanAndConnect, 5000);
+            });
+            scanTimeout = null;
+        }
+    }, function (error) {
+        logToScreen("Scan failed: " + JSON.stringify(error));
+    });
+
+    scanTimeout = setTimeout(function () {
+        logToScreen("Scan timeout reached.");
+    }, 10000);  // Timeout after 10 seconds
+}
+
+function sendDataToESP32(data) {
+    let dataBuffer = new TextEncoder().encode(data); // Convert text to bytes
+    
+    ble.write(connectedDevice.id, connectedDevice.services[0].characteristics[0].id, connectedDevice.characteristics[0].id,
+        dataBuffer.buffer,
+        () => logToScreen("Data sent successfully: " + data),
+        (error) => logToScreen("Failed to send data: " + JSON.stringify(error))
+    );
+}
+
+$("#scan").click(scanAndConnect);
+$("#level").on("input", function() {
+    let level = $(this).val();
+    console.log("Level: " + level);
+    sendDataToESP32(level);
+});
+
+const MAX_CONSOLE_LINES = 10;
+
+function logToScreen(message) {
+    let consoleDiv = $("#consoleOutput");
+    if (consoleDiv.children().length > MAX_CONSOLE_LINES) {
+        consoleDiv.children().first().remove();
+    }
+    consoleDiv.append(`<p>${message}</p>`);
+    consoleDiv.scrollTop(consoleDiv.prop("scrollHeight")); // Auto-scroll
 }

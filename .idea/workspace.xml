@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="5e907e8d-4c7a-4c9f-b87c-fca76c4c7810" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/krisDial.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.vscode/plugins.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.vscode/typings/cordova/cordova.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESP32Code.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../config.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jsconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../typings/cordova-typings.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../www/css/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/../www/css/custom.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../www/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/../www/css/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../www/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../www/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../www/js/ble.js" beforeDir="false" afterPath="$PROJECT_DIR$/../www/js/ble.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../www/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../www/js/index.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 2
+}]]></component>
+  <component name="ProjectId" id="2saGC8Mohhpdth3kt7bb4rbIzbX" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/Desktop/code/krisDial/hello/platforms/android"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5e907e8d-4c7a-4c9f-b87c-fca76c4c7810" name="Changes" comment="" />
+      <created>1738686141470</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1738686141470</updated>
+    </task>
+    <servers />
+  </component>
+</project>
